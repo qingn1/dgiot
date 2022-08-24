@@ -107,7 +107,7 @@ do_request(post_handlewarnsendsms, #{<<"appId">> := AppId, <<"appKey">> := AppKe
     end;
 
 %数字工厂告警
-do_request(post_warnsendsms, #{<<"objectId">> := DeviceId, <<"branchId">> := BranchId,"orderId":= OrderId, <<"datetimes">> := DateTimes, <<"docnumber">> := Docnumber, <<"username">> := UserName, <<"workshop">> := Workshop, <<"level">> := Level, <<"desc">> := Desc, <<"file">> := FileInfo}, _Context, _Req) ->
+do_request(post_warnsendsms, #{<<"objectId">> := DeviceId, <<"department">> := Department,<<"branchId">> := BranchId,"orderId":= OrderId, <<"datetimes">> := DateTimes, <<"docnumber">> := Docnumber, <<"username">> := UserName, <<"workshop">> := Workshop, <<"level">> := Level, <<"desc">> := Desc, <<"file">> := FileInfo}, _Context, _Req) ->
 
     case Level of
         <<"1">> ->
@@ -132,6 +132,7 @@ do_request(post_warnsendsms, #{<<"objectId">> := DeviceId, <<"branchId">> := Bra
                     <<"alarm">> => #{
                         <<"deviceId"/utf8>> => DeviceId,
                         <<"orderId"/utf8>> => OrderId,
+                        <<"department"/utf8>> => Department,
                         <<"docnumber"/utf8>> => Docnumber,
                         <<"datetimes"/utf8>> => DateTimes,
                         <<"username"/utf8>> => UserName,
